@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СДЕЛАЙ ТЕЛО | GET BODY — Фитнес-студия в Перми</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; color: #1a1a1a; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; padding: 15px 0; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-circle { width: 50px; height: 50px; background: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; font-size: 10px; text-align: center; line-height: 1.1; }
+.logo h1 { font-size: 20px; }
+.logo p { font-size: 12px; color: #888; }
+nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: 500; font-size: 14px; }
+nav a:hover { color: #e63946; }
+.header-phone { font-weight: 700; color: #1a1a1a; text-decoration: none; }
+.btn { display: inline-block; background: #e63946; color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; font-size: 15px; transition: 0.3s; }
+.btn:hover { background: #c92a37; transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 2px solid #e63946; color: #e63946; }
+.btn-outline:hover { background: #e63946; color: #fff; }
+.hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #fff; padding: 80px 0; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(230,57,70,0.3) 0%, transparent 70%); border-radius: 50%; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; position: relative; z-index: 1; }
+.hero h2 { font-size: 46px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+.hero h2 span { color: #e63946; }
+.hero p { font-size: 18px; color: #ccc; margin-bottom: 30px; }
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 30px; margin-top: 40px; }
+.hero-stats .num { font-size: 32px; font-weight: 900; color: #e63946; }
+.hero-stats .label { font-size: 14px; color: #aaa; }
+.hero-photo { border-radius: 20px; overflow: hidden; height: 440px; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+section { padding: 80px 0; }
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-title h2 { font-size: 36px; font-weight: 900; margin-bottom: 10px; }
+.section-title p { color: #666; font-size: 18px; }
+.about { background: #f8f8f8; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.about-grid h3 { font-size: 28px; margin-bottom: 20px; }
+.about-grid p { margin-bottom: 15px; color: #555; font-size: 17px; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+.feature { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(230,57,70,0.08); }
+.feature .icon { font-size: 28px; margin-bottom: 10px; }
+.feature h4 { font-size: 16px; margin-bottom: 5px; }
+.feature p { font-size: 13px; color: #888; }
+.about-photo { border-radius: 20px; overflow: hidden; height: 450px; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.service-card { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: 0.3s; border-top: 4px solid #e63946; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(230,57,70,0.15); }
+.service-card .icon { font-size: 40px; margin-bottom: 15px; }
+.service-card h3 { font-size: 20px; margin-bottom: 10px; }
+.service-card p { color: #666; font-size: 15px; }
+.prices { background: #f8f8f8; }
+.price-heading { text-align: center; margin: 40px 0 20px; font-size: 22px; }
+.price-heading:first-of-type { margin-top: 0; }
+.price-table { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); max-width: 800px; margin: 0 auto; }
+.price-table table { width: 100%; border-collapse: collapse; }
+.price-table th { background: #1a1a1a; color: #fff; padding: 18px; text-align: left; font-size: 16px; }
+.price-table td { padding: 15px 18px; border-bottom: 1px solid #eee; font-size: 15px; }
+.price-table tr:last-child td { border-bottom: none; }
+.price-table tr:hover { background: #f8f8f8; }
+.price-table .price { font-weight: 700; color: #e63946; font-size: 18px; }
+.price-note { text-align: center; color: #888; font-size: 14px; margin-top: 20px; }
+.trainers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.trainer-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.trainer-photo { height: 320px; overflow: hidden; }
+.trainer-photo img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+.trainer-card:hover .trainer-photo img { transform: scale(1.05); }
+.trainer-info { padding: 20px; text-align: center; }
+.trainer-info h4 { font-size: 17px; margin-bottom: 5px; }
+.trainer-info p { color: #e63946; font-size: 14px; font-weight: 600; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.gallery-item { border-radius: 12px; overflow: hidden; height: 300px; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+.gallery-item:hover img { transform: scale(1.05); }
+.cta { background: linear-gradient(135deg, #e63946 0%, #c92a37 100%); color: #fff; text-align: center; padding: 60px 0; }
+.cta h2 { font-size: 36px; font-weight: 900; margin-bottom: 15px; }
+.cta p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+.cta .btn { background: #fff; color: #e63946; }
+.cta .btn:hover { background: #f0f0f0; }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.contacts-grid h3 { font-size: 28px; margin-bottom: 25px; }
+.contact-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+.contact-item .icon { font-size: 24px; }
+.contact-item h4 { font-size: 16px; margin-bottom: 3px; }
+.contact-item p { color: #666; font-size: 15px; }
+.contact-item a { color: #e63946; text-decoration: none; font-weight: 600; }
+.contact-map { background: #f0f0f0; border-radius: 16px; height: 400px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 18px; }
+footer { background: #1a1a1a; color: #bbb; padding: 30px 0; text-align: center; font-size: 14px; }
+footer a { color: #e63946; text-decoration: none; }
+@media (max-width: 768px) {
+  .hero-inner, .about-grid, .contacts-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 30px; }
+  .services-grid, .gallery-grid, .trainers-grid { grid-template-columns: 1fr; }
+  nav { display: none; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-circle">GET<br>BODY</div>
+      <div><h1>СДЕЛАЙ ТЕЛО</h1><p>фитнес-студия · Пермь</p></div>
+    </div>
+    <nav>
+      <a href="#about">О студии</a>
+      <a href="#services">Услуги</a>
+      <a href="#prices">Цены</a>
+      <a href="#trainers">Тренеры</a>
+      <a href="#gallery">Зал</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="tel:+79024777700" class="header-phone">+7 (902) 477-77-00</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <h2>Сделай тело<br><span>своей мечты</span></h2>
+      <p>Фитнес-студия «GET BODY» в Перми — тренируем 24/7, создаём красивые формы. Персональные занятия с тренером, сплит-тренировки, более 15 направлений групповых занятий, массаж, детский фитнес и танцы.</p>
+      <div class="hero-buttons">
+        <a href="#contacts" class="btn">Записаться на тренировку</a>
+        <a href="tel:+79024777700" class="btn btn-outline">📞 Позвонить</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">1,5К</div><div class="label">подписчиков</div></div>
+        <div><div class="num">15+</div><div class="label">направлений</div></div>
+        <div><div class="num">24/7</div><div class="label">тренируем</div></div>
+      </div>
+    </div>
+    <div class="hero-photo"><img src="photo1.jpg" alt="GET BODY"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>О студии</h2>
+      <p>Фитнес-студия для здоровья и красоты вашего тела</p>
+    </div>
+    <div class="about-grid">
+      <div>
+        <h3>Красивые формы и здоровое тело</h3>
+        <p>«GET BODY» — это студия, где каждый найдёт свой формат: интенсивные тренировки для тела мечты или мягкие занятия для здоровья. У нас работают сертифицированные тренеры с многолетним опытом.</p>
+        <p><strong>В нашей фитнес-студии есть:</strong></p>
+        <div class="about-features">
+          <div class="feature"><div class="icon">💪</div><h4>Персональные тренировки</h4><p>Индивидуально с тренером</p></div>
+          <div class="feature"><div class="icon">👥</div><h4>Сплит-тренировки</h4><p>Для двоих — эффективно и весело</p></div>
+          <div class="feature"><div class="icon">🧘</div><h4>15+ направлений</h4><p>Групповые занятия на любой вкус</p></div>
+          <div class="feature"><div class="icon">💆</div><h4>Массаж</h4><p>Восстановление и расслабление</p></div>
+          <div class="feature"><div class="icon">🧒</div><h4>Детский фитнес</h4><p>Йоготерапия для детей</p></div>
+          <div class="feature"><div class="icon">💃</div><h4>Танцы</h4><p>Танцевальные направления</p></div>
+        </div>
+      </div>
+      <div class="about-photo"><img src="photo2.jpg" alt="Тренировка в GET BODY"></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title"><h2>Наши услуги</h2><p>Выберите то, что подходит именно вам</p></div>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">💪</div><h3>Персональные тренировки</h3><p>Индивидуальные занятия в тренажёрном зале под контролем фитнес-инструктора. Тренер составит план под ваши цели.</p></div>
+      <div class="service-card"><div class="icon">👥</div><h3>Сплит-тренировки</h3><p>Занятия для двоих с тренером. Эффективно, весело и выгоднее, чем персонально.</p></div>
+      <div class="service-card"><div class="icon">🏋️</div><h3>Групповые занятия</h3><p>Более 15 направлений: силовые, функциональные, растяжка, йога, танцы. Для любого уровня.</p></div>
+      <div class="service-card"><div class="icon">💆</div><h3>Массаж</h3><p>Восстановительный и расслабляющий массаж для тела и души.</p></div>
+      <div class="service-card"><div class="icon">🧒</div><h3>Детский фитнес</h3><p>Йоготерапия и детские тренировки. Здоровье и осанка с детства.</p></div>
+      <div class="service-card"><div class="icon">💃</div><h3>Танцевальные направления</h3><p>Современные танцы, растяжка и пластика для девушек и женщин.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="prices" id="prices">
+  <div class="container">
+    <div class="section-title"><h2>Цены</h2><p>Прозрачные цены без скрытых платежей</p></div>
+
+    <h3 class="price-heading">Персональные тренировки</h3>
+    <div class="price-table"><table>
+      <tr><th>Тренер</th><th>Цена за занятие</th></tr>
+      <tr><td>Ксения</td><td class="price">1400 ₽</td></tr>
+      <tr><td>Алла</td><td class="price">1500 ₽</td></tr>
+      <tr><td>Ирина</td><td class="price">1200 ₽</td></tr>
+      <tr><td>Николай</td><td class="price">1200 ₽</td></tr>
+      <tr><td>Анна</td><td class="price">1200 ₽</td></tr>
+      <tr><td>Тимофей</td><td class="price">1400 ₽</td></tr>
+    </table></div>
+
+    <h3 class="price-heading">Сплит-тренировки (2 человека)</h3>
+    <div class="price-table"><table>
+      <tr><th>Тренер</th><th>Цена за занятие</th></tr>
+      <tr><td>Ксения</td><td class="price">800 ₽</td></tr>
+      <tr><td>Алла</td><td class="price">900 ₽</td></tr>
+      <tr><td>Ирина</td><td class="price">800 ₽</td></tr>
+      <tr><td>Николай</td><td class="price">700 ₽</td></tr>
+      <tr><td>Анна</td><td class="price">700 ₽</td></tr>
+      <tr><td>Тимофей</td><td class="price">800 ₽</td></tr>
+    </table></div>
+    <p class="price-note">Точные цены и абонементы уточняйте по телефону у администратора.</p>
+  </div>
+</section>
+
+<section id="trainers">
+  <div class="container">
+    <div class="section-title"><h2>Наши тренеры</h2><p>Сертифицированные специалисты с опытом</p></div>
+    <div class="trainers-grid">
+      <div class="trainer-card">
+        <div class="trainer-photo"><img src="photo3.jpg" alt="Тренер Ксения"></div>
+        <div class="trainer-info"><h4>Ксения</h4><p>Функциональный тренинг</p></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo"><img src="photo4.jpg" alt="Тренер Алла"></div>
+        <div class="trainer-info"><h4>Алла</h4><p>Силовой · Функциональный</p></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo"><img src="photo5.jpg" alt="Тренер Ирина"></div>
+        <div class="trainer-info"><h4>Ирина</h4><p>Групповые программы</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-title"><h2>Наш зал</h2><p>Просторный зал с современным оборудованием</p></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="photo6.jpg" alt="Зал"></div>
+      <div class="gallery-item"><img src="photo7.jpg" alt="Занятие"></div>
+      <div class="gallery-item"><img src="photo1.jpg" alt="Тренировка"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Начни тренироваться сегодня</h2>
+    <p>Запишись на первое занятие и почувствуй результат</p>
+    <a href="tel:+79024777700" class="btn">📞 Записаться</a>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <div class="section-title"><h2>Контакты</h2><p>Ждём вас в студии</p></div>
+    <div class="contacts-grid">
+      <div>
+        <h3>Фитнес-студия «GET BODY»</h3>
+        <div class="contact-item"><div class="icon">📍</div><div><h4>Адрес</h4><p>г. Пермь, ул. Адмирала Ушакова, 366</p></div></div>
+        <div class="contact-item"><div class="icon">📞</div><div><h4>Телефон</h4><p><a href="tel:+79024777700">+7 (902) 477-77-00</a></p></div></div>
+        <div class="contact-item"><div class="icon">🌐</div><div><h4>ВКонтакте</h4><p><a href="https://vk.com/getbody.perm" target="_blank">vk.com/getbody.perm</a></p></div></div>
+        <div class="contact-item"><div class="icon">📷</div><div><h4>Instagram</h4><p><a href="https://instagram.com/getbody.perm" target="_blank">instagram.com/getbody.perm</a></p></div></div>
+      </div>
+      <div class="contact-map">🗺️ Карта — ул. Адмирала Ушакова, 366</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Фитнес-студия «GET BODY» · Пермь, ул. Адмирала Ушакова, 366 · <a href="tel:+79024777700">+7 (902) 477-77-00</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
